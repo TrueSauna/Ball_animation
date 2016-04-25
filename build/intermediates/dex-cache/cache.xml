@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="D:\git\ORG\Ball_animation\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0 rc2"
+        sha1="b654617d02eee3ea4f9f6e0f18a195981c39239f">
+        <dex dex="D:\git\ORG\Ball_animation\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_455eb6f53d450f0023dab6cde28e21284e1ddb66\classes.dex" />
+    </item>
+    <item
         jar="D:\git\ORG\Ball_animation\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
         jumboMode="true"
         revision="24.0.0 rc2"
@@ -40,7 +47,7 @@
         jar="D:\git\ORG\Ball_animation\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.0 rc2"
-        sha1="d304a9e1855a86861fd9190da0f89fec4a0aa3f1">
+        sha1="db81b15ed26ccbdfd29a56d59ddbd925210ac503">
         <dex dex="D:\git\ORG\Ball_animation\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_1a32d89779225c8934510123e0556c998ae54f0c\classes.dex" />
     </item>
     <item
@@ -49,13 +56,6 @@
         revision="24.0.0 rc2"
         sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
         <dex dex="D:\git\ORG\Ball_animation\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.1_efd358856f7349d1a9ffd2b176d6d830be5c44c9\classes.dex" />
-    </item>
-    <item
-        jar="D:\git\ORG\Ball_animation\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        revision="24.0.0 rc2"
-        sha1="6095c5471e8905d5441da4c95f5ce8b338b28ae3">
-        <dex dex="D:\git\ORG\Ball_animation\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_455eb6f53d450f0023dab6cde28e21284e1ddb66\classes.dex" />
     </item>
 
 </items>
