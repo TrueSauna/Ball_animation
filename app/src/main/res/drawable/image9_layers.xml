@@ -1,0 +1,4 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ball9" />
+    <item android:drawable="@drawable/hands9" />
+</layer-list>
