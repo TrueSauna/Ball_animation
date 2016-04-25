@@ -2,6 +2,7 @@ package com.example.ago.ball_animation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
@@ -29,11 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
         //useless atm:
         for(int i = 0 ; i < aDBall.getNumberOfFrames() ; i++){
-            //Drawable dFrame = aDBall.getFrame(i);
+            Drawable dFrame = aDBall.getFrame(i);
             //dFrame.setFilterBitmap(false);
             //dFrame.setDither(false);
 
-            //Bitmap bmp = BitmapFactory.decodeResource(this.getResources(), dFrame.);
+            Bitmap bm = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+            bm.createScaledBitmap(bm, bm.getWidth()*2, bm.getHeight()*2, false);
+
+            //dFrame.setBounds(0,0,0,0);
+            dFrame.draw(new Canvas(bm));
+
+
         }
 
 

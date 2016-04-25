@@ -40,7 +40,7 @@
         jar="D:\git\ORG\Ball_animation\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.0 rc2"
-        sha1="5b939e965233c25bea91fe0bf6ee789257b74940">
+        sha1="d304a9e1855a86861fd9190da0f89fec4a0aa3f1">
         <dex dex="D:\git\ORG\Ball_animation\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_1a32d89779225c8934510123e0556c998ae54f0c\classes.dex" />
     </item>
     <item
@@ -54,7 +54,7 @@
         jar="D:\git\ORG\Ball_animation\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="24.0.0 rc2"
-        sha1="f35c4d03580449e41d57bec18d3e631bdfbaeb87">
+        sha1="6095c5471e8905d5441da4c95f5ce8b338b28ae3">
         <dex dex="D:\git\ORG\Ball_animation\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_455eb6f53d450f0023dab6cde28e21284e1ddb66\classes.dex" />
     </item>
 
