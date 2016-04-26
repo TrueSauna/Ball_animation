@@ -17,4 +17,13 @@
 
 
         />
+
+    <ImageView
+        android:layout_width="160pt"
+        android:layout_height="160pt"
+        android:id="@+id/viewWarrior"
+        android:background="@drawable/warrior_160"
+
+
+        />
 </RelativeLayout>
