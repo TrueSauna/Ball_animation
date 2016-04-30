@@ -13,17 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/viewBall"
-        android:background="@drawable/animation_list_ball"
-
-
         />
 
-    <ImageView
-        android:layout_width="160pt"
-        android:layout_height="160pt"
-        android:id="@+id/viewWarrior"
-        android:background="@drawable/warrior_160"
-
-
-        />
 </RelativeLayout>
