@@ -8,6 +8,9 @@ import android.graphics.drawable.Drawable;
 /**
  * Created by Ago on 28.4.2016.
  */
+
+//NOT USED
+
 public class ImageLayer {
 
    public ImageLayer(Drawable[] d) {

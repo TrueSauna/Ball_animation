@@ -32,26 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList aListImagesToBeAnimated = new ArrayList();
 
-
-
-
-
-
-
         Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet);
 
-        SpriteToArrayList sToA = new SpriteToArrayList(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX);
+        SpriteToArrayList sToA = new SpriteToArrayList(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
         aListImagesToBeAnimated = sToA.separateImagesFromSheet();
-
-        /*
-        ImageLayer[] ilImage = new ImageLayer[12];
-        ilImage[0].setD();
-
-        */
-
-
-
-
 
     }
 

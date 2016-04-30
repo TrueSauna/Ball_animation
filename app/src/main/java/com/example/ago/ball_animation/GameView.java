@@ -13,7 +13,7 @@ import android.view.SurfaceView;
  * Created by Ago on 28.4.2016.
  */
 
-
+//NOT USED
 
 public class GameView extends SurfaceView implements Runnable {
 

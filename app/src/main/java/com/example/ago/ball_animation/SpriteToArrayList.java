@@ -121,6 +121,7 @@ public class SpriteToArrayList extends AppCompatActivity {
 
     public void combineLayers(ArrayList al){
 
+        //
         Drawable[] layers = new Drawable[iFramesX];
         /*
         Drawable[] layers = new Drawable[2];
