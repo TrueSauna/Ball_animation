@@ -4,7 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by Ago on 30.4.2016.
  */
-public class SpriteToArrayList extends AppCompatActivity {
+public class Sprite extends AppCompatActivity {
 
     private int xStart = 0;
     private int yStart = 0;
@@ -81,7 +83,7 @@ public class SpriteToArrayList extends AppCompatActivity {
         this.spriteSheet = spriteSheet;
     }
 
-    public SpriteToArrayList(int xStart, int yStart, int frameHeight, int frameWidth, int iFramesY, int iFramesX, Bitmap spriteSheet) {
+    public Sprite(int xStart, int yStart, int frameHeight, int frameWidth, int iFramesY, int iFramesX, Bitmap spriteSheet) {
         this.xStart = xStart;
         this.yStart = yStart;
         this.frameHeight = frameHeight;
@@ -92,18 +94,23 @@ public class SpriteToArrayList extends AppCompatActivity {
     }
 
 
-    public ArrayList separateImagesFromSheet(){
+    public Drawable[] separateSheetToDrawables(){
 
-        ArrayList aListImagesToBeAnimated = new ArrayList();
+        //Bitmap[] arrayImagesToBeAnimated = new Bitmap[50];
+
+        //12 times
+
 
         for(int i = 0 ; i < iFramesX ; i++){
 
+            Drawable[] layers = new Drawable[iFramesY];
+            Bitmap bmFrame = Bitmap.createBitmap(frameWidth, frameHeight, Bitmap.Config.ARGB_8888);
+
+
+            //2 times
             for(int j = 0; j < iFramesY ; i++){
                 xStart = i * frameWidth;
                 yStart = j * frameHeight;
-                //xStart = (i % iFramesInRows) * frameWidth;
-                //yStart = (i / iFramesInRows) * frameHeight;
-                Bitmap bmFrame = Bitmap.createBitmap(frameWidth, frameHeight, Bitmap.Config.ARGB_8888);
 
                 Canvas c = new Canvas(bmFrame);
 
@@ -112,27 +119,42 @@ public class SpriteToArrayList extends AppCompatActivity {
 
                 c.drawBitmap(spriteSheet, src, dst, null);
 
-                aListImagesToBeAnimated.add(bmFrame);
+                layers[i] =  new BitmapDrawable(getResources(), bmFrame);
+
+
             }
+
+            LayerDrawable layerDrawable = new LayerDrawable(layers);
         }
 
-        return aListImagesToBeAnimated;
+        return layers;
     }
 
-    public void combineLayers(ArrayList al){
+    public void combineLayers(Bitmap[] bmLayers){
+        /*REMOVE WHOLE METHOD
 
-        //
-        Drawable[] layers = new Drawable[iFramesX];
-        /*
-        Drawable[] layers = new Drawable[2];
-        layers[0] = getDrawable(R.drawable.ball1);
-        layers[1] = getDrawable(R.drawable.hands1);
+        for(int i = 0 ; i < iFramesY ; i++) {
+
+
+            for (int j = 0; j < iFramesY; j++) {
+
+                Drawable[] layers = new Drawable[iFramesY];
+
+                layers[i] = new BitmapDrawable(getResources(), bmLayers[i]);
+
+                //REMOVE?
+                //layers[0] = getDrawable(R.drawable.ball1);
+                //layers[1] = getDrawable(R.drawable.hands1);
+
+
+                //ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
+
+                //iwBall.setImageDrawable(layerDrawable);
+            }
+
+        }
         LayerDrawable layerDrawable = new LayerDrawable(layers);
         */
-
-        //ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
-
-        //iwBall.setImageDrawable(layerDrawable);
 
     }
 

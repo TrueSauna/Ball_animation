@@ -2,15 +2,11 @@ package com.example.ago.ball_animation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Rect;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,14 +25,25 @@ public class MainActivity extends AppCompatActivity {
         int iFramesY = 2;
         int iFramesX = 12;
 
-
-        ArrayList aListImagesToBeAnimated = new ArrayList();
-
         Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet);
 
-        SpriteToArrayList sToA = new SpriteToArrayList(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
-        aListImagesToBeAnimated = sToA.separateImagesFromSheet();
+        Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
 
+        Drawable[] drawables = sprite.separateSheetToDrawables();
+
+        int x = drawables.length;
+
+
+        ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
+        AnimationDrawable animation = new AnimationDrawable();
+        //BitmapDrawable bmdAnimation = new BitmapDrawable(drawables);
+
+        for(Drawable draw: drawables){
+            animation.addFrame(draw, 100);
+        }
+
+        iwBall.setBackground(animation);
+        animation.start();
     }
 
 
