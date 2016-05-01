@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
 
-        Drawable[] drawables = sprite.separateSheetToDrawables();
+        Drawable[] drawables = sprite.separateSheetToDrawables(getResources());
 
         int x = drawables.length;
 

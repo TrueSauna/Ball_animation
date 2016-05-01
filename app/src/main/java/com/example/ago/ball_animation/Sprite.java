@@ -1,5 +1,7 @@
 package com.example.ago.ball_animation;
 
+import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by Ago on 30.4.2016.
  */
-public class Sprite extends AppCompatActivity {
+public class Sprite extends Activity {
 
     private int xStart = 0;
     private int yStart = 0;
@@ -94,18 +96,19 @@ public class Sprite extends AppCompatActivity {
     }
 
 
-    public Drawable[] separateSheetToDrawables(){
+    public Drawable[] separateSheetToDrawables(Resources res){
 
         //Bitmap[] arrayImagesToBeAnimated = new Bitmap[50];
 
         //12 times
+
+        LayerDrawable[] layers2 = new LayerDrawable[iFramesY];
 
 
         for(int i = 0 ; i < iFramesX ; i++){
 
             Drawable[] layers = new Drawable[iFramesY];
             Bitmap bmFrame = Bitmap.createBitmap(frameWidth, frameHeight, Bitmap.Config.ARGB_8888);
-
 
             //2 times
             for(int j = 0; j < iFramesY ; i++){
@@ -119,15 +122,14 @@ public class Sprite extends AppCompatActivity {
 
                 c.drawBitmap(spriteSheet, src, dst, null);
 
-                layers[i] =  new BitmapDrawable(getResources(), bmFrame);
-
-
+                layers[i] =  new BitmapDrawable(res, bmFrame);
             }
 
             LayerDrawable layerDrawable = new LayerDrawable(layers);
+            layers2[i] = layerDrawable;
         }
 
-        return layers;
+        return layers2;
     }
 
     public void combineLayers(Bitmap[] bmLayers){
