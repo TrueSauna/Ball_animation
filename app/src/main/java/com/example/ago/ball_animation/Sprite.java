@@ -127,12 +127,16 @@ public class Sprite extends Activity {
         frameHeight = 100 + frameHeight;
         frameWidth = 100 + frameWidth;
 
+        //array of images that each will be combined from several layers
         LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];
 
         //this loop is done as many times as there are frames in WHOLE animations
         for(int i = 0 ; i < iFramesX ; i++){
 
+            //ONE frame (image) that will contain several layers that are stacked in order
             Drawable[] imageLayers = new Drawable[iFramesY];
+
+            //empty frame for the image to be copied from spritesheet
             Bitmap bmFrame = Bitmap.createBitmap(frameWidth, frameHeight, Bitmap.Config.ARGB_8888);
 
             //this loop is done as many times as there are layers in each frame of the animation
@@ -140,17 +144,17 @@ public class Sprite extends Activity {
                 xStart = i * frameWidth;
                 yStart = j * frameHeight;
 
-                Canvas c = new Canvas(bmFrame);
+                //copying image from spritesheet from spesific spot to a spesific spot:
+                Canvas canvas = new Canvas(bmFrame);
+                Rect source = new Rect(xStart, yStart, xStart + frameWidth, yStart + frameHeight);
+                Rect destination = new Rect(0,0, frameWidth, frameHeight);
+                canvas.drawBitmap(spriteSheet, source, destination, null);
 
-                Rect src = new Rect(xStart, yStart, xStart + frameWidth, yStart + frameHeight);
-                Rect dst = new Rect(0,0, frameWidth, frameHeight);
-
-                c.drawBitmap(spriteSheet, src, dst, null);
-
+                //adding copied image (layer) to an array to eventually form ONE frame
                 imageLayers[j] =  new BitmapDrawable(res, bmFrame);
-
             }
 
+            //adding ONE combined image to an array to form an animation sequence
             LayerDrawable layerDrawable = new LayerDrawable(imageLayers);
             layerDrawablesToBeAnimated[i] = layerDrawable;
         }
