@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 //        BitmapFactory.Options options = new BitmapFactory.Options();
 //
 //        options.inScaled = false;
+
+
+
+        Log.d("Test", "density: " + metrics.density);
+
 
         //Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spreadsheet2, options);
         Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3);
