@@ -10,8 +10,8 @@
     tools:context="com.example.ago.ball_animation.MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200px"
+        android:layout_height="200px"
         android:id="@+id/viewBall"
         />
 

@@ -124,8 +124,8 @@ public class Sprite extends Activity {
         */
 
         //TODO WTF IS THIS:
-        frameHeight = 100 + frameHeight;
-        frameWidth = 100 + frameWidth;
+        frameHeight = frameHeight;
+        frameWidth = frameWidth;
 
         //array of images that each will be combined from several layers
         LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];

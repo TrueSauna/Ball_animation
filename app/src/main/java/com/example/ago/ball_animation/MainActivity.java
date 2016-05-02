@@ -32,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
 
         //fetch the spritesheet and make an instance of it
-        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3);
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inScaled = false;
+
+        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3, options);
         Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
 
         //cut the spritesheet into separate images and layer the correct parts together to form one frame of the animation and
