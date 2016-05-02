@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -98,34 +99,48 @@ public class Sprite extends Activity {
     }
 
 
-    public Drawable[] separateSheetToDrawables(Resources res, ImageView iwBall){
+    public Drawable[] separateSheetToDrawables(Resources res, ImageView iwBall, float density){
 
-        /*
-        REMOVE
 
-        did this for testing one image
+//        REMOVE
+//
+//        did this for testing one image
 
-        LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];
-        boolean firstTime = true;
 
-        Bitmap bmFrame = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bmFrame);
+//        LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];
+//        boolean firstTime = true;
+//        int size = 50;
+//
+//        Bitmap bmFrame = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+//        Canvas c = new Canvas(bmFrame);
+//
+//        Rect src = new Rect(0, 0, size, size);
+//        Rect dst = new Rect(0,0, size, size);
+//
+//        c.drawBitmap(spriteSheet, src, dst, null);
+//
+//        Drawable d =  new BitmapDrawable(res, bmFrame);
+//
+//        //layerDrawablesToBeAnimated[0] = (LayerDrawable)d;
+//
+//        iwBall.setBackground(d);
+//
+//        return layerDrawablesToBeAnimated;
 
-        Rect src = new Rect(0, 0, 300, 300);
-        Rect dst = new Rect(0,0, 300, 300);
-
-        c.drawBitmap(spriteSheet, src, dst, null);
-
-        Drawable d =  new BitmapDrawable(res, bmFrame);
-
-        iwBall.setBackground(d);
-
-        return d;
-        */
 
         //TODO WTF IS THIS:
-        frameHeight = 100 + frameHeight;
-        frameWidth = 100 + frameWidth;
+//        frameHeight = 100 + frameHeight;
+//        frameWidth = 100 + frameWidth;
+
+
+
+
+    //    float multiplier = 2.625f;
+
+
+
+        frameHeight = (int)((float)frameHeight * density);
+        frameWidth = (int)((float)frameWidth * density);
 
         //array of images that each will be combined from several layers
         LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];

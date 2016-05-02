@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,14 +32,24 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
 
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+
         //fetch the spritesheet and make an instance of it
+        //Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3);
+
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//
+//        options.inScaled = false;
+
+        //Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spreadsheet2, options);
         Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3);
+
         Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
 
         //cut the spritesheet into separate images and layer the correct parts together to form one frame of the animation and
         //then combining these images to an Drawable array
         //this method takes imageview just for testing purposes inside the method
-        Drawable[] drawables = sprite.separateSheetToDrawables(getResources(), iwBall);
+        Drawable[] drawables = sprite.separateSheetToDrawables(getResources(), iwBall, metrics.density);
 
         //TODO include this animation-logic to sprite-class (takes frameduration as parameter)
         //animate the processed array of drawables:
