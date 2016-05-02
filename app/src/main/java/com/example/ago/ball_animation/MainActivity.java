@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         //this method takes imageview just for testing purposes inside the method
         Drawable[] drawables = sprite.separateSheetToDrawables(getResources(), iwBall);
 
+        //TODO include this animation-logic to sprite-class (takes frameduration as parameter)
         //animate the processed array of drawables:
         AnimationDrawable animation = new AnimationDrawable();
 
