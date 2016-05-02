@@ -3,6 +3,7 @@ package com.example.ago.ball_animation;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,25 +26,33 @@ public class MainActivity extends AppCompatActivity {
         int iFramesY = 2;
         int iFramesX = 12;
 
-        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet);
+        ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
 
+        //fetch the spritesheet and make an instance of it
+        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3);
         Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
 
-        Drawable[] drawables = sprite.separateSheetToDrawables(getResources());
+        //cut the spritesheet into separate images and layer the correct parts together to form one frame of the animation
+        //this method takes imageview just for testing purposes inside the method
+        Drawable[] drawables = sprite.separateSheetToDrawables(getResources(), iwBall);
 
-        int x = drawables.length;
-
-
-        ImageView iwBall = (ImageView) findViewById(R.id.viewBall);
+        //animate the processed array of drawables:
         AnimationDrawable animation = new AnimationDrawable();
-        //BitmapDrawable bmdAnimation = new BitmapDrawable(drawables);
 
-        for(Drawable draw: drawables){
-            animation.addFrame(draw, 100);
+        //foreach:
+        for(Drawable layeredImage: drawables){
+            animation.addFrame(layeredImage, 50);
         }
 
-        iwBall.setBackground(animation);
-        animation.start();
+        //start animation:
+        if (iwBall != null) {
+            iwBall.setBackground(animation);
+            animation.start();
+        }
+
+
+
+
     }
 
 

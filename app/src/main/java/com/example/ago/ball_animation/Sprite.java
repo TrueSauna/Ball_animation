@@ -9,7 +9,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -96,22 +98,45 @@ public class Sprite extends Activity {
     }
 
 
-    public Drawable[] separateSheetToDrawables(Resources res){
+    public Drawable[] separateSheetToDrawables(Resources res, ImageView iwBall){
 
-        //Bitmap[] arrayImagesToBeAnimated = new Bitmap[50];
+        /*
+        REMOVE
 
-        //12 times
+        did this for testing one image
 
-        LayerDrawable[] layers2 = new LayerDrawable[iFramesY];
+        LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];
+        boolean firstTime = true;
 
+        Bitmap bmFrame = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bmFrame);
 
+        Rect src = new Rect(0, 0, 300, 300);
+        Rect dst = new Rect(0,0, 300, 300);
+
+        c.drawBitmap(spriteSheet, src, dst, null);
+
+        Drawable d =  new BitmapDrawable(res, bmFrame);
+
+        iwBall.setBackground(d);
+
+        return d;
+        */
+
+        //TODO WTF IS THIS:
+        frameHeight = 100 + frameHeight;
+        frameWidth = 100 + frameWidth;
+
+        LayerDrawable[] layerDrawablesToBeAnimated = new LayerDrawable[iFramesX];
+
+        //this loop is done as many times as there are frames in WHOLE animations
         for(int i = 0 ; i < iFramesX ; i++){
 
-            Drawable[] layers = new Drawable[iFramesY];
+            Drawable[] imageLayers = new Drawable[iFramesY];
             Bitmap bmFrame = Bitmap.createBitmap(frameWidth, frameHeight, Bitmap.Config.ARGB_8888);
 
-            //2 times
-            for(int j = 0; j < iFramesY ; i++){
+            //this loop is done as many times as there are layers in each frame of the animation
+            for(int j = 0; j < iFramesY ; j++){
                 xStart = i * frameWidth;
                 yStart = j * frameHeight;
 
@@ -122,18 +147,34 @@ public class Sprite extends Activity {
 
                 c.drawBitmap(spriteSheet, src, dst, null);
 
-                layers[i] =  new BitmapDrawable(res, bmFrame);
+                imageLayers[j] =  new BitmapDrawable(res, bmFrame);
+
             }
 
-            LayerDrawable layerDrawable = new LayerDrawable(layers);
-            layers2[i] = layerDrawable;
+            LayerDrawable layerDrawable = new LayerDrawable(imageLayers);
+            layerDrawablesToBeAnimated[i] = layerDrawable;
         }
 
-        return layers2;
+
+        return layerDrawablesToBeAnimated;
+
     }
 
+    //REMOVE OR NOT
+    public Drawable combineOneLayer(){
+
+        Drawable[] layers = new Drawable[2];
+
+        int fHeight = 150;
+        int fWidth = 150;
+
+        return layers[1];
+
+    }
+
+    //REMOVE OR NOT
     public void combineLayers(Bitmap[] bmLayers){
-        /*REMOVE WHOLE METHOD
+        /*
 
         for(int i = 0 ; i < iFramesY ; i++) {
 
