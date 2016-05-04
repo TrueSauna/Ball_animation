@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         int yStart = 0;
 
         //dimensions of the images in the spritesheet
-        int frameHeight = 50;
-        int frameWidth = 50;
+        int frameHeight = 50;           // set to 100 for ball_spritesheet
+        int frameWidth = 50;            // set to 100 for ball_spritesheet
 
         //number of frames (X) of the finished animation and layers of the single image (Y)
         //TODO test with values 1 and 2 -> error etc check (spritesheet has only 2 rows of images, rest is empty (10 rows))
@@ -46,31 +46,58 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("Test", "density: " + metrics.density);
 
+//        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet);
+//        Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
+
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inScaled = false;
 
         //Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spreadsheet2, options);
-        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3);
+        Bitmap spriteSheet = BitmapFactory.decodeResource(getResources(), R.drawable.ball_spritesheet3, options);
 
-        Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
+        //Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), imageID, options);
 
-        //cut the spritesheet into separate images and layer the correct parts together to form one frame of the animation and
-        //then combining these images to an Drawable array
-        //this method takes imageview just for testing purposes inside the method
-        Drawable[] drawables = sprite.separateSheetToDrawables(getResources(), iwBall, metrics.density);
 
-        //TODO include this animation-logic to sprite-class (takes frameduration as parameter)
-        //animate the processed array of drawables:
-        AnimationDrawable animation = new AnimationDrawable();
+        BitmapDrawable draw = new BitmapDrawable(spriteSheet);
+//        draw.setAntiAlias(false);
+//        draw.setDither(false);
+        draw.setFilterBitmap(false);
 
-        //foreach:
-        for(Drawable layeredImage: drawables){
-            animation.addFrame(layeredImage, 50);
-        }
 
-        //start animation:
-        if (iwBall != null) {
-            iwBall.setBackground(animation);
-            animation.start();
-        }
+        draw.setTargetDensity(metrics);
+
+
+        iwBall.setImageDrawable(draw);
+
+
+//        Sprite sprite = new Sprite(xStart,yStart,frameHeight,frameWidth,iFramesY,iFramesX, spriteSheet);
+//
+//
+//
+//
+//
+//
+//
+//        //cut the spritesheet into separate images and layer the correct parts together to form one frame of the animation and
+//        //then combining these images to an Drawable array
+//        //this method takes imageview just for testing purposes inside the method
+//        Drawable[] drawables = sprite.separateSheetToDrawables(getResources(), iwBall, metrics.density);
+//
+//        //TODO include this animation-logic to sprite-class (takes frameduration as parameter)
+//        //animate the processed array of drawables:
+//        AnimationDrawable animation = new AnimationDrawable();
+//
+//        //foreach:
+//        for(Drawable layeredImage: drawables){
+//            animation.addFrame(layeredImage, 50);
+//        }
+//
+//        //start animation:
+//        if (iwBall != null) {
+//            iwBall.setBackground(animation);
+//            animation.start();
+//        }
 
 
 

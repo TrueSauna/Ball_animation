@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -129,8 +130,8 @@ public class Sprite extends Activity {
 
 
         //TODO WTF IS THIS:
-//        frameHeight = 100 + frameHeight;
-//        frameWidth = 100 + frameWidth;
+//        frameHeight = 50 + frameHeight;
+//        frameWidth = 50 + frameWidth;
 
 
 
@@ -154,6 +155,14 @@ public class Sprite extends Activity {
             //empty frame for the image to be copied from spritesheet
             Bitmap bmFrame = Bitmap.createBitmap(frameWidth, frameHeight, Bitmap.Config.ARGB_8888);
 
+//            Paint paint = new Paint();
+//
+//            //set the paint settings
+//            paint.setAntiAlias(false);
+//            paint.setDither(true);
+//            paint.setFilterBitmap(false);
+
+
             //this loop is done as many times as there are layers in each frame of the animation
             for(int j = 0; j < iFramesY ; j++){
                 xStart = i * frameWidth;
@@ -166,7 +175,10 @@ public class Sprite extends Activity {
                 canvas.drawBitmap(spriteSheet, source, destination, null);
 
                 //adding copied image (layer) to an array to eventually form ONE frame
-                imageLayers[j] =  new BitmapDrawable(res, bmFrame);
+
+//                BitmapDrawable draw = new BitmapDrawable(res, bmFrame);
+//                draw.setFilterBitmap(false);
+                imageLayers[j] = new BitmapDrawable(res, bmFrame);
             }
 
             //adding ONE combined image to an array to form an animation sequence
